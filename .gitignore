@@ -1,0 +1,14 @@
+# IDE
+*.user
+.idea
+*.cbp
+
+# Cmake
+CMakeCache.txt
+CMakeFiles/
+cmake-build*
+cmake_install.cmake
+Makefile
+
+# OS
+.DS_Store
