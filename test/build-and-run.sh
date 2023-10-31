@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eou pipefail
+set -euo pipefail
 
 # Ensure that cc and c++ are valid commands
 cc --version

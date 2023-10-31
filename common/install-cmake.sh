@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eou pipefail
+set -euo pipefail
 
 CMAKE_VERSION=3.27.5
 CMAKE_ARCH=linux-$(uname -m)

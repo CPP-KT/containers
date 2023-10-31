@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eou pipefail
+set -euo pipefail
 
 # Install dependencies
 echo "Installing vcpkg dependencies"
