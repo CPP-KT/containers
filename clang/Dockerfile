@@ -10,6 +10,7 @@ COPY clang/install-clang.sh ./
 ENV CC /usr/bin/clang
 ENV CXX /usr/bin/clang++ -stdlib=libc++
 ENV CMAKE_GENERATOR Ninja
+ENV CMAKE_TOOLCHAIN_FILE=/opt/vcpkg/scripts/buildsystems/vcpkg.cmake
 ENV VCPKG_DEFAULT_BINARY_CACHE /var/cache/vcpkg/
 
 ARG LLVM_VERSION
