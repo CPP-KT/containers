@@ -20,5 +20,5 @@ echo "Installing commonly used vcpkg packages (${packages[*]})"
 mkdir "${VCPKG_DEFAULT_BINARY_CACHE}"
 /opt/vcpkg/vcpkg install "${packages[@]}"
 
-# Allow modification of .vcpkg-root by any user
-chmod a+w /opt/vcpkg/.vcpkg-root
+# Allow write access for all users
+chmod -R a+w /opt/vcpkg
