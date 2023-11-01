@@ -9,7 +9,7 @@ COPY common/ common/
 ENV CC /usr/local/bin/gcc
 ENV CXX /usr/local/bin/g++
 ENV CMAKE_GENERATOR Ninja
-ENV VCPKG_DEFAULT_BINARY_CACHE /root/vcpkg-cache/
+ENV VCPKG_DEFAULT_BINARY_CACHE /var/cache/vcpkg/
 
 RUN apt-get update -qq && \
     ln -sf ${CC} /usr/bin/cc && \
