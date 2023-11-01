@@ -7,8 +7,8 @@ WORKDIR /root
 COPY common/ common/
 COPY clang/install-clang.sh ./
 
-ENV CC clang
-ENV CXX clang++ -stdlib=libc++
+ENV CC /usr/bin/clang
+ENV CXX /usr/bin/clang++ -stdlib=libc++
 ENV CMAKE_GENERATOR Ninja
 ENV VCPKG_DEFAULT_BINARY_CACHE /root/vcpkg-cache/
 
