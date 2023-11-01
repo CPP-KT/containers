@@ -19,7 +19,8 @@ apt-get install -y --no-install-recommends \
   "clang-format-${LLVM_VERSION}" \
   "libc++-${LLVM_VERSION}-dev" \
   "libc++abi-${LLVM_VERSION}-dev" \
-  "libclang-rt-${LLVM_VERSION}-dev"
+  "libclang-rt-${LLVM_VERSION}-dev" \
+  "liblldb-${LLVM_VERSION}-dev"
 
 ln -sf "/usr/lib/llvm-${LLVM_VERSION}/bin"/* /usr/bin
 ln -sf clang /usr/bin/cc
