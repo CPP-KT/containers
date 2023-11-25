@@ -34,12 +34,12 @@ sudo usermod -aG docker $USER
 
 После этого, вероятно, придётся перезапустить пользовательскую сессию.
 
-### MacOS
+### macOS
 
 Установите [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/).
 
 > [!NOTE]
-> Если у вас MacOS, вы можете помочь дополнить этот раздел.
+> Если у вас macOS, вы можете помочь дополнить этот раздел.
 
 ### Windows
 
