@@ -36,10 +36,16 @@ sudo usermod -aG docker $USER
 
 ### macOS
 
-Установите [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/).
+Установите [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) с официального сайта.
 
-> [!NOTE]
-> Если у вас macOS, вы можете помочь дополнить этот раздел.
+Или, если у вас установлен пакетный менеджер [homebrew](https://brew.sh/), можете сделать это более ёмко через терминал:
+
+```shell
+brew install --cask docker
+open -a docker
+```
+
+Если вам не нравится всплывающий при запуске из терминала `dashboard`, вы можете отключить такое поведение, сняв чекбокс в `"Preferences" -> "General" -> "Open Docker Dashboard at startup"`.
 
 ### Windows
 
