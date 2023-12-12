@@ -16,7 +16,9 @@ apt-get update
 
 apt-get install -y --no-install-recommends \
   "clang-${LLVM_VERSION}" \
+  "clang-tools-${LLVM_VERSION}" \
   "clang-format-${LLVM_VERSION}" \
+  "clang-tidy-${LLVM_VERSION}" \
   "libc++-${LLVM_VERSION}-dev" \
   "libc++abi-${LLVM_VERSION}-dev" \
   "libclang-rt-${LLVM_VERSION}-dev" \
