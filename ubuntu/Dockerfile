@@ -3,20 +3,18 @@ LABEL maintainer="CPP-KT"
 
 WORKDIR /root
 
-ENV CC /usr/bin/gcc
-ENV CXX /usr/bin/g++
+ARG COMPILER_TYPE
+ARG COMPILER_VERSION
+
 ENV CMAKE_GENERATOR Ninja
 ENV CMAKE_TOOLCHAIN_FILE=/opt/vcpkg/scripts/buildsystems/vcpkg.cmake
 ENV VCPKG_DEFAULT_BINARY_CACHE /var/cache/vcpkg/
 
-ARG GCC_VERSION
-
-RUN --mount=type=bind,target=common,source=common \
-    --mount=type=bind,target=install-gcc.sh,source=gcc/install-gcc.sh \
+RUN --mount=type=bind,target=util,source=ubuntu/util \
     apt-get update -qq && \
-    common/install-base-utils.sh && \
-    ./install-gcc.sh ${GCC_VERSION} && \
-    common/install-all.sh && \
+    util/install-base-utils.sh && \
+    util/install-${COMPILER_TYPE}.sh ${COMPILER_VERSION} && \
+    util/install-extra-utils.sh && \
     # cleanup
     apt-get autoremove -y --purge && \
     apt-get clean && \

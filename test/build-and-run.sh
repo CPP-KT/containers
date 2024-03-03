@@ -9,7 +9,7 @@ c++ --version
 echo 'Building test target'
 
 BUILD_DIR=cmake-build
-mkdir "${BUILD_DIR}"
+mkdir -p "${BUILD_DIR}"
 
 cmake \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -19,6 +19,7 @@ cmake --build "${BUILD_DIR}"
 
 # Run
 echo 'Running test target'
+export ASAN_OPTIONS=alloc_dealloc_mismatch=0 # https://github.com/llvm/llvm-project/issues/59432
 "${BUILD_DIR}"/test
 
 # Clean up

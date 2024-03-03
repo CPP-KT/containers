@@ -16,6 +16,7 @@ echo "${DEB_LINE}" > /etc/apt/sources.list.d/apt.llvm.org.list
 apt-get update -qq
 
 apt-get install -y --no-install-recommends \
+  "llvm-${LLVM_VERSION}" \
   "clang-${LLVM_VERSION}" \
   "clang-tools-${LLVM_VERSION}" \
   "clang-format-${LLVM_VERSION}" \
