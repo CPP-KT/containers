@@ -11,7 +11,7 @@ REPO_NAME="deb ${BASE_URL}/${DEBIAN_VERSION}/ llvm-toolchain-${DEBIAN_VERSION}-$
 
 wget -qO- "${BASE_URL}/llvm-snapshot.gpg.key" | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
 
-add-apt-repository "${REPO_NAME}"
+echo "${REPO_NAME}" > /etc/apt/sources.list.d/apt.llvm.org.list
 apt-get update
 
 apt-get install -y --no-install-recommends \

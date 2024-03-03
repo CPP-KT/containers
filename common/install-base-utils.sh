@@ -6,9 +6,6 @@ packages=()
 # SSL certificates
 packages+=(ca-certificates)
 
-# apt-add-repository
-packages+=(software-properties-common)
-
 # Needed for line break checks
 packages+=(dos2unix)
 
