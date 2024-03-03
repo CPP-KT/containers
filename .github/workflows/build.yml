@@ -33,7 +33,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build --file ubuntu/Dockerfile . \
+          docker build ubuntu \
             --tag "${{ env.IMAGE_FULL_TAG }}" \
             --build-arg COMPILER_TYPE=${{ matrix.compiler }} \
             --build-arg COMPILER_VERSION=${{ matrix.version }}
