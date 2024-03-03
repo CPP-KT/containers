@@ -25,7 +25,7 @@ cd "${SOURCE_DIR}"
 # Build
 echo "Building Valgrind"
 ./configure
-make
+make -j
 
 # Install
 echo "Installing Valgrind"
