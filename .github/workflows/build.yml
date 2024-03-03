@@ -49,7 +49,7 @@ jobs:
             --interactive \
             --user $(id -u):$(id -g) \
             ${{ env.REGISTRY }}/${{ env.IMAGE_TAG }} \
-            /bin/bash < $GITHUB_WORKSPACE/test/build-and-run.sh
+            build-and-run.sh
 
       - name: Log in to the Container registry
         uses: docker/login-action@v3
@@ -111,7 +111,7 @@ jobs:
             --interactive \
             --user $(id -u):$(id -g) \
             ${{ env.REGISTRY }}/${{ env.IMAGE_TAG }} \
-            /bin/bash < $GITHUB_WORKSPACE/test/build-and-run.sh
+            build-and-run.sh
 
       - name: Log in to the Container registry
         uses: docker/login-action@v3

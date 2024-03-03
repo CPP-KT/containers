@@ -18,3 +18,5 @@ RUN apt-get update -qq && \
     common/install-all.sh
 
 RUN rm -rf common
+
+ENTRYPOINT ["/bin/bash"]

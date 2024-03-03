@@ -22,3 +22,5 @@ RUN apt-get update -qq && \
 
 RUN rm install-clang.sh
 RUN rm -rf common
+
+ENTRYPOINT ["/bin/bash"]
