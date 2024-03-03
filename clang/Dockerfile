@@ -1,4 +1,4 @@
-FROM bitnami/minideb:bookworm
+FROM ubuntu:23.10
 LABEL maintainer="CPP-KT"
 
 WORKDIR /root
