@@ -1,5 +1,4 @@
-ARG DEBIAN_VERSION
-FROM bitnami/minideb:${DEBIAN_VERSION}
+FROM bitnami/minideb:bookworm
 LABEL maintainer="CPP-KT"
 
 WORKDIR /root

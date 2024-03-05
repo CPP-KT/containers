@@ -8,15 +8,14 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - { llvm: 15, debian: bookworm }
-          - { llvm: 16, debian: bookworm }
-          - { llvm: 17, debian: bookworm }
+          - 17
+          - 18
 
     runs-on: ubuntu-latest
 
     env:
       REGISTRY: ghcr.io
-      IMAGE_TAG: ${{ github.repository_owner }}/clang:${{ matrix.version.llvm }}
+      IMAGE_TAG: ${{ github.repository_owner }}/clang:${{ matrix.version }}
 
     steps:
       - name: Lowercase IMAGE_TAG
@@ -38,8 +37,7 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_TAG }}
           file: clang/Dockerfile
           build-args: |
-            DEBIAN_VERSION=${{ matrix.version.debian }}
-            LLVM_VERSION=${{ matrix.version.llvm }}
+            LLVM_VERSION=${{ matrix.version }}
 
       - name: Test Docker image
         run: |
@@ -66,8 +64,7 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_TAG }}
           file: clang/Dockerfile
           build-args: |
-            DEBIAN_VERSION=${{ matrix.version.debian }}
-            LLVM_VERSION=${{ matrix.version.llvm }}
+            LLVM_VERSION=${{ matrix.version }}
 
   gcc:
     strategy:
