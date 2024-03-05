@@ -28,7 +28,7 @@ jobs:
       - name: Prepare environment variables
         run: |
           echo "IMAGE_NAME=${IMAGE_NAME,,}" >>$GITHUB_ENV
-          echo "IMAGE_FULL_TAG=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}" >>$GITHUB_ENV
+          echo "IMAGE_FULL_TAG=$REGISTRY/${IMAGE_NAME,,}:$IMAGE_TAG" >>$GITHUB_ENV
 
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -36,7 +36,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build ubuntu \
-            --tag "${{ env.IMAGE_FULL_TAG }}" \
+            --tag "$IMAGE_FULL_TAG" \
             --build-arg COMPILER_TYPE=${{ matrix.compiler }} \
             --build-arg COMPILER_VERSION=${{ matrix.version }}
 
@@ -47,7 +47,7 @@ jobs:
             --workdir /src \
             --interactive \
             --user $(id -u):$(id -g) \
-            "${{ env.IMAGE_FULL_TAG }}" \
+            "$IMAGE_FULL_TAG" \
             build-and-run.sh
 
       - name: Log in to the Container registry
@@ -59,4 +59,4 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker push "${{ env.IMAGE_FULL_TAG }}"
+          docker push "$IMAGE_FULL_TAG"
