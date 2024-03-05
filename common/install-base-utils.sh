@@ -21,7 +21,4 @@ packages+=(ninja-build)
 # For verbose messages in case of an abnormal program termination
 packages+=(gdb)
 
-# Can be used for profiling
-packages+=(linux-perf)
-
 apt-get install -y --no-install-recommends "${packages[@]}"
