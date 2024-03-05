@@ -8,7 +8,7 @@ apt-get install -y --no-install-recommends \
 
 # Download vcpkg
 echo "Cloning vcpkg repository"
-git clone https://github.com/microsoft/vcpkg.git /opt/vcpkg
+git clone https://github.com/microsoft/vcpkg.git /opt/vcpkg --depth 1
 
 # Install vcpkg
 echo "Installing vcpkg"
@@ -21,4 +21,4 @@ mkdir "${VCPKG_DEFAULT_BINARY_CACHE}"
 /opt/vcpkg/vcpkg install "${packages[@]}"
 
 # Allow write access for all users
-chmod -R a+w /opt/vcpkg
+chmod -R a+w /opt/vcpkg "${VCPKG_DEFAULT_BINARY_CACHE}"
