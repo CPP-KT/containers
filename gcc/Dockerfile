@@ -4,19 +4,19 @@ LABEL maintainer="CPP-KT"
 
 WORKDIR /root
 
-COPY common/ common/
-
 ENV CC /usr/local/bin/gcc
 ENV CXX /usr/local/bin/g++
 ENV CMAKE_GENERATOR Ninja
 ENV CMAKE_TOOLCHAIN_FILE=/opt/vcpkg/scripts/buildsystems/vcpkg.cmake
 ENV VCPKG_DEFAULT_BINARY_CACHE /var/cache/vcpkg/
 
-RUN apt-get update -qq && \
-    ln -sf ${CC} /usr/bin/cc && \
-    ln -sf ${CXX} /usr/bin/c++ && \
-    common/install-all.sh
-
-RUN rm -rf common
+RUN --mount=type=bind,target=common,source=common \
+    apt-get update -qq && \
+    common/install-all.sh && \
+    # cleanup
+    apt-get autoremove -y --purge && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /tmp/*
 
 ENTRYPOINT ["/bin/bash"]
