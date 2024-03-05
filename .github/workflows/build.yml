@@ -19,12 +19,14 @@ jobs:
 
     env:
       REGISTRY: ghcr.io
-      IMAGE_TAG: "${{ github.repository_owner }}/ubuntu:${{ matrix.compiler }}-${{ matrix.version }}"
+      IMAGE_NAME: "${{ github.repository_owner }}/ubuntu"
+      IMAGE_TAG: "${{ matrix.compiler }}-${{ matrix.version }}"
 
     steps:
-      - name: Lowercase IMAGE_TAG
+      - name: Prepare environment variables
         run: |
-          echo "IMAGE_TAG=${IMAGE_TAG,,}" >>$GITHUB_ENV
+          echo "IMAGE_NAME=${IMAGE_NAME,,}" >>$GITHUB_ENV
+          echo "IMAGE_FULL_TAG=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}" >>$GITHUB_ENV
 
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -38,7 +40,7 @@ jobs:
         with:
           context: .
           load: true
-          tags: "${{ env.REGISTRY }}/${{ env.IMAGE_TAG }}"
+          tags: "${{ env.IMAGE_FULL_TAG }}"
           file: ubuntu/Dockerfile
           build-args: |
             COMPILER_TYPE=${{ matrix.compiler }}
@@ -51,7 +53,7 @@ jobs:
             --workdir /src \
             --interactive \
             --user $(id -u):$(id -g) \
-            "${{ env.REGISTRY }}/${{ env.IMAGE_TAG }}" \
+            "${{ env.IMAGE_FULL_TAG }}" \
             build-and-run.sh
 
       - name: Log in to the Container registry
@@ -66,7 +68,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: "${{ env.REGISTRY }}/${{ env.IMAGE_TAG }}"
+          tags: "${{ env.IMAGE_FULL_TAG }}"
           file: ubuntu/Dockerfile
           build-args: |
             COMPILER_TYPE=${{ matrix.compiler }}
