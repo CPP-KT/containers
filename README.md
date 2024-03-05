@@ -56,13 +56,13 @@ open -a docker
 
 ## Установка и обновление образов
 
-Мы предлагаем отдельные образы для gcc и clang.
+Мы предлагаем отдельные образы Ubuntu для gcc и clang.
 Если вы хотите проверять своё решение обоими компиляторами, понадобится установить оба образа.
 
-Пример установки образов с `gcc 13` и `clang 17` (в зависимости от задания, версии, используемые в CI, могут отличаться):
+Пример установки образов с `gcc 13` и `clang 18` (в зависимости от задания, версии, используемые в CI, могут отличаться):
 ```shell
-docker pull ghcr.io/cpp-kt/gcc:13
-docker pull ghcr.io/cpp-kt/clang:17
+docker pull ghcr.io/cpp-kt/ubuntu:gcc-13
+docker pull ghcr.io/cpp-kt/ubuntu:clang-17
 ```
 
 Для обновления образов нужно снова сделать `docker pull`.
@@ -105,7 +105,7 @@ docker run -it --rm \
 docker run -it --rm \
   -v .:/src -w /src \
   -u $(id -u):$(id -g) \
-  ghcr.io/cpp-kt/gcc:13 /bin/bash
+  ghcr.io/cpp-kt/ubuntu:gcc-13 /bin/bash
 ```
 
 Внутри контейнера для сборки и запуска можно использовать скрипты из директории `ci-extra`:
