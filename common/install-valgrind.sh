@@ -11,6 +11,9 @@ echo "Installing valgrind dependencies"
 apt-get install -y --no-install-recommends \
   make bzip2 libc6-dbg
 
+# Set working directory to /tmp
+pushd /tmp
+
 # Download
 echo "Downloading ${FILENAME}"
 wget -nv "${DOWNLOAD_URL}/${FILENAME}" -O "${FILENAME}"
@@ -20,7 +23,7 @@ echo "Unpacking ${FILENAME}"
 tar xf "${FILENAME}"
 
 SOURCE_DIR="valgrind-${VALGRIND_VERSION}"
-cd "${SOURCE_DIR}"
+pushd "${SOURCE_DIR}"
 
 # Build
 echo "Building Valgrind"
@@ -31,7 +34,6 @@ make -j
 echo "Installing Valgrind"
 make install
 
-# Clean up
-cd ..
-rm -rf "${SOURCE_DIR}"
-rm "${FILENAME}"
+# Go back
+popd
+popd
