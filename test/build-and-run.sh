@@ -20,3 +20,6 @@ cmake --build "${BUILD_DIR}"
 # Run
 echo 'Running test target'
 "${BUILD_DIR}"/test
+
+# Clean up
+rm -rf "$BUILD_DIR"
