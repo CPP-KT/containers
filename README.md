@@ -97,7 +97,7 @@ docker run -it --rm \
   -v <path/to/local/directory>:/<path/to/container/directory> \
   -w <path/to/container/directory> \
   -u $(id -u):$(id -g) \
-  <image_name> /bin/bash
+  <image_name>
 ```
 
 Например, находясь в корне проекта:
@@ -105,7 +105,7 @@ docker run -it --rm \
 docker run -it --rm \
   -v .:/src -w /src \
   -u $(id -u):$(id -g) \
-  ghcr.io/cpp-kt/ubuntu:gcc-13 /bin/bash
+  ghcr.io/cpp-kt/ubuntu:gcc-13
 ```
 
 Внутри контейнера для сборки и запуска можно использовать скрипты из директории `ci-extra`:
