@@ -113,3 +113,9 @@ docker run -it --rm \
 ci-extra/build.sh Release
 ci-extra/test.sh Release
 ```
+
+Также можно запускать отдельные команды через докер, не заходя в него:
+```shell
+docker run -t --rm -v .:/src -w /src -u $(id -u):$(id -g) ghcr.io/cpp-kt/ubuntu:gcc-13 ci-extra/build.sh Release
+docker run -t --rm -v .:/src -w /src -u $(id -u):$(id -g) ghcr.io/cpp-kt/ubuntu:gcc-13 ci-extra/test.sh Release
+```

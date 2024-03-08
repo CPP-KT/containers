@@ -20,5 +20,3 @@ RUN --mount=type=bind,target=util,source=util \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
-
-ENTRYPOINT ["/bin/bash"]
