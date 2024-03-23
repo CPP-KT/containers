@@ -3,7 +3,7 @@ project(container-test)
 
 set(CMAKE_CXX_STANDARD 20)
 
-find_package(GTest REQUIRED)
+find_package(Catch2 REQUIRED)
 
 add_executable(test test.cpp)
 
@@ -13,7 +13,7 @@ target_compile_options(test PRIVATE -Werror -pedantic-errors)
 target_compile_options(test PRIVATE -fsanitize=address,undefined,leak -fno-sanitize-recover=all)
 target_link_options(test PRIVATE -fsanitize=address,undefined,leak)
 
-target_link_libraries(test GTest::gtest GTest::gtest_main)
+target_link_libraries(test PRIVATE Catch2::Catch2WithMain)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   message(STATUS "Enabling libc++...")

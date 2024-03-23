@@ -15,7 +15,7 @@ echo "Installing vcpkg"
 /opt/vcpkg/bootstrap-vcpkg.sh -disableMetrics
 
 # Install commonly used packages
-packages=(gtest)
+packages=(gtest catch2)
 echo "Installing commonly used vcpkg packages (${packages[*]})"
 mkdir "${VCPKG_DEFAULT_BINARY_CACHE}"
 /opt/vcpkg/vcpkg install "${packages[@]}"
