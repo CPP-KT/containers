@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-CMAKE_VERSION=3.28.0
+CMAKE_VERSION=3.29.1
 CMAKE_ARCH=linux-$(uname -m)
 
 DOWNLOAD_URL="https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/"
