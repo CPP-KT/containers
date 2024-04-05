@@ -62,7 +62,7 @@ open -a docker
 Пример установки образов с `gcc 13` и `clang 18` (в зависимости от задания, версии, используемые в CI, могут отличаться):
 ```shell
 docker pull ghcr.io/cpp-kt/ubuntu:gcc-13
-docker pull ghcr.io/cpp-kt/ubuntu:clang-17
+docker pull ghcr.io/cpp-kt/ubuntu:clang-18
 ```
 
 Для обновления образов нужно снова сделать `docker pull`.
