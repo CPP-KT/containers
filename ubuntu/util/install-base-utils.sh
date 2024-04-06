@@ -21,4 +21,7 @@ packages+=(ninja-build)
 # For verbose messages in case of an abnormal program termination
 packages+=(gdb)
 
+# For processing CTest's JSON output
+packages+=(jq)
+
 apt-get install -y --no-install-recommends "${packages[@]}"
