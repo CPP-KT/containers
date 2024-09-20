@@ -59,10 +59,10 @@ open -a docker
 Мы предлагаем отдельные образы Ubuntu для gcc и clang.
 Если вы хотите проверять своё решение обоими компиляторами, понадобится установить оба образа.
 
-Пример установки образов с `gcc 13` и `clang 18` (в зависимости от задания, версии, используемые в CI, могут отличаться):
+Пример установки образов с `gcc 14` и `clang 19` (в зависимости от задания, версии, используемые в CI, могут отличаться):
 ```shell
-docker pull ghcr.io/cpp-kt/ubuntu:gcc-13
-docker pull ghcr.io/cpp-kt/ubuntu:clang-18
+docker pull ghcr.io/cpp-kt/ubuntu:gcc-14
+docker pull ghcr.io/cpp-kt/ubuntu:clang-19
 ```
 
 Для обновления образов нужно снова сделать `docker pull`.
@@ -105,7 +105,7 @@ docker run -it --rm \
 docker run -it --rm \
   -v .:/src -w /src \
   -u $(id -u):$(id -g) \
-  ghcr.io/cpp-kt/ubuntu:gcc-13
+  ghcr.io/cpp-kt/ubuntu:gcc-14
 ```
 
 Внутри контейнера для сборки и запуска можно использовать скрипты из директории `ci-extra`:
@@ -116,8 +116,8 @@ ci-extra/test.sh Release
 
 Также можно запускать отдельные команды через докер, не заходя в него:
 ```shell
-docker run -t --rm -v .:/src -w /src -u $(id -u):$(id -g) ghcr.io/cpp-kt/ubuntu:gcc-13 \
+docker run -t --rm -v .:/src -w /src -u $(id -u):$(id -g) ghcr.io/cpp-kt/ubuntu:gcc-14 \
   ci-extra/build.sh Release
-docker run -t --rm -v .:/src -w /src -u $(id -u):$(id -g) ghcr.io/cpp-kt/ubuntu:gcc-13 \
+docker run -t --rm -v .:/src -w /src -u $(id -u):$(id -g) ghcr.io/cpp-kt/ubuntu:gcc-14 \
   ci-extra/test.sh Release
 ```
