@@ -10,7 +10,7 @@ BASE_URL='http://apt.llvm.org'
 REPO_NAME="llvm-toolchain-${DEBIAN_VERSION}-${LLVM_VERSION}"
 DEB_LINE="deb ${BASE_URL}/${DEBIAN_VERSION}/ ${REPO_NAME} main"
 
-wget -qO- "${BASE_URL}/llvm-snapshot.gpg.key" | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+wget -qO- "${BASE_URL}/llvm-snapshot.gpg.key" > /etc/apt/trusted.gpg.d/apt.llvm.org.asc
 
 echo "${DEB_LINE}" > /etc/apt/sources.list.d/apt.llvm.org.list
 apt-get update -qq
