@@ -16,7 +16,7 @@ wget -nv "${DOWNLOAD_URL}/${FILENAME}" -O "${FILENAME}"
 
 # Install CMake
 echo "Installing CMake"
-bash "${FILENAME}" --skip-license --prefix=/usr/local --exclude-subdir
+bash "${FILENAME}" --skip-license --prefix=/usr --exclude-subdir
 
 # Go back
 popd
