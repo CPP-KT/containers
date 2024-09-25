@@ -6,9 +6,9 @@ WORKDIR /root
 ARG COMPILER_TYPE
 ARG COMPILER_VERSION
 
-ENV CMAKE_GENERATOR Ninja
+ENV CMAKE_GENERATOR=Ninja
 ENV CMAKE_TOOLCHAIN_FILE=/opt/vcpkg/scripts/buildsystems/vcpkg.cmake
-ENV VCPKG_DEFAULT_BINARY_CACHE /var/cache/vcpkg/
+ENV VCPKG_DEFAULT_BINARY_CACHE=/var/cache/vcpkg/
 
 RUN --mount=type=bind,target=util,source=util \
     apt-get update -qq && \
