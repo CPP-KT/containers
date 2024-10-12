@@ -24,4 +24,7 @@ packages+=(gdb)
 # For processing CTest's JSON output
 packages+=(jq)
 
+# Used for tests by various tasks
+packages+=(python3)
+
 apt-get install -y --no-install-recommends "${packages[@]}"
