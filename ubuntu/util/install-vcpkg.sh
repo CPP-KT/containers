@@ -8,7 +8,7 @@ apt-get install -y --no-install-recommends \
 
 # Download vcpkg
 echo "Cloning vcpkg repository"
-git clone https://github.com/microsoft/vcpkg.git /opt/vcpkg --depth 1
+git clone https://github.com/cpp-kt/vcpkg.git /opt/vcpkg --branch year2025 --depth 1
 
 # Install vcpkg
 echo "Installing vcpkg"
