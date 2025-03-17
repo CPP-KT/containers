@@ -49,6 +49,7 @@ jobs:
             --workdir /src \
             --interactive \
             --user $(id -u):$(id -g) \
+            --env CMAKE_TOOLCHAIN_FILE=/opt/vcpkg/scripts/buildsystems/vcpkg.cmake \
             "$IMAGE_FULL_TAG" \
             ./build-and-run.sh
 
