@@ -73,18 +73,17 @@ docker pull ghcr.io/cpp-kt/ubuntu:clang-19
 
 Подробнее про интеграцию с CLion можно почитать [тут](https://www.jetbrains.com/help/clion/clion-toolchains-in-docker.html#build-run-debug-docker).
 
-- Заходим в Settings -> Build, Execution,... -> Toolchains
+- Заходим в `Settings`->`Build, Execution,...`->`Toolchains`
 - Создаём новый тулчейн типа "Docker"
 - CLion должен сам задетектить Docker server и установленные образы, выбираем нужный
-- В настройках созданного тулчейна в поле "CMake" выберите "Custom CMake executable" и впишите туда `cmake`
 - В поле "Build Tool" впишите `ninja`
 - Остальные поля можно оставить без изменения
 
 Эти действия достаточно проделать один раз, т.к. тулчейны не привязаны к текущему проекту.
 
-Чтобы использовать созданный тулчейн, сделайте его тулчейном по умолчанию (подняв в самый верх) или укажите его в поле "Toolchain" в CMake profile.
+Чтобы использовать созданный тулчейн, сделайте его тулчейном по умолчанию (подняв в самый верх) или укажите его в поле "Toolchain" в CMake profile (если профиль был сгенерирован из CMake пресета, может потребоваться его скопировать, чтобы он стал доступен для модификации).
 
-При любых непонятных ошибках первым делом попробуйте ресетнуть CMake проект: Tools -> CMake -> Reset Cache and Reload Project. Если не помогает, приходите в чат.
+При любых непонятных ошибках первым делом попробуйте ресетнуть CMake проект: `Tools`->`CMake`->`Reset Cache and Reload Project`. Если не помогает, приходите в чат.
 
 ## Ручной запуск
 
@@ -110,14 +109,14 @@ docker run -it --rm \
 
 Внутри контейнера для сборки и запуска можно использовать скрипты из директории `ci-extra`:
 ```shell
-ci-extra/build.sh Release
-ci-extra/test.sh Release
+ci-extra/build.sh CI-GCC-Release
+ci-extra/test.sh CI-GCC-Release
 ```
 
 Также можно запускать отдельные команды через докер, не заходя в него:
 ```shell
 docker run -t --rm -v .:/src -w /src -u $(id -u):$(id -g) ghcr.io/cpp-kt/ubuntu:gcc-14 \
-  ci-extra/build.sh Release
+  ci-extra/build.sh CI-GCC-Release
 docker run -t --rm -v .:/src -w /src -u $(id -u):$(id -g) ghcr.io/cpp-kt/ubuntu:gcc-14 \
-  ci-extra/test.sh Release
+  ci-extra/test.sh CI-GCC-Release
 ```
