@@ -12,6 +12,8 @@ jobs:
             version: 14
           - compiler: clang
             version: 19
+          - compiler: clang
+            version: 20
 
     name: "Ubuntu, ${{ matrix.compiler }}-${{ matrix.version }}"
 
