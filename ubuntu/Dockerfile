@@ -8,6 +8,7 @@ ARG COMPILER_VERSION
 
 ENV CMAKE_GENERATOR=Ninja
 ENV VCPKG_DEFAULT_BINARY_CACHE=/var/cache/vcpkg/
+ENV CT_VCPKG_ROOT_DIR=/opt/vcpkg
 
 RUN --mount=type=bind,target=util,source=util \
     apt-get update -qq && \
