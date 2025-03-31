@@ -9,11 +9,7 @@ jobs:
       matrix:
         include:
           - compiler: gcc
-            version: 13
-          - compiler: gcc
             version: 14
-          - compiler: clang
-            version: 18
           - compiler: clang
             version: 19
 
