@@ -24,3 +24,10 @@ RUN --mount=type=bind,target=util,source=util \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
+
+ENV CCACHE_BASEDIR=/src
+ENV CCACHE_DIR=/var/cache/ccache
+ENV CCACHE_NOHASHDIR=true
+ENV CCACHE_IGNOREOPTIONS=-ffile-prefix-map=*
+ENV CCACHE_READONLY=true
+ENV CCACHE_TEMPDIR=/tmp/ccache
