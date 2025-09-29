@@ -36,4 +36,7 @@ packages+=(jq)
 # Used for tests by various tasks
 packages+=(python3)
 
+# include-what-you-use
+packages+=(iwyu)
+
 apt-get install -y --no-install-recommends "${packages[@]}"
