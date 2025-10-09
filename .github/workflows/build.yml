@@ -10,8 +10,12 @@ jobs:
         include:
           - compiler: gcc
             version: 14
+          - compiler: gcc
+            version: 15
           - compiler: clang
             version: 20
+          - compiler: clang
+            version: 21
 
     name: "Ubuntu, ${{ matrix.compiler }}-${{ matrix.version }}"
 
