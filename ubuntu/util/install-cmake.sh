@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-CMAKE_VERSION=4.0.0
+CMAKE_VERSION=4.1.2
 CMAKE_ARCH=linux-$(uname -m)
 
 DOWNLOAD_URL="https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/"
