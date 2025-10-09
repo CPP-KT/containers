@@ -23,4 +23,4 @@ export ASAN_OPTIONS=alloc_dealloc_mismatch=0 # https://github.com/llvm/llvm-proj
 "${BUILD_DIR}"/test
 
 # Clean up
-rm -rf "$BUILD_DIR"
+rm -rf "${BUILD_DIR}"

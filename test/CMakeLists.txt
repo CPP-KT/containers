@@ -1,23 +1,25 @@
-cmake_minimum_required(VERSION 4.0.0)
-project(container-test)
+cmake_minimum_required(VERSION 3.24...3.31)
 
-set(CMAKE_CXX_STANDARD 20)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+include(ConfigureCompiler)
+include(CompilerWarnings)
 
-find_package(Catch2 REQUIRED)
+project(template LANGUAGES CXX)
 
-add_executable(test test.cpp)
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-target_compile_options(test PRIVATE -Wall -Wextra -Wno-sign-compare)
-target_compile_options(test PRIVATE -Werror -pedantic-errors)
+ct_configure_compiler()
+include(Dependencies)
 
-target_compile_options(test PRIVATE -fsanitize=address,undefined,leak -fno-sanitize-recover=all)
-target_link_options(test PRIVATE -fsanitize=address,undefined,leak)
+# Setup a 'tests' target
+set(TESTS_SOURCES test.cpp)
+add_executable(tests ${TESTS_SOURCES})
+target_include_directories(tests PRIVATE test)
+ct_set_compiler_warnings(tests)
 
-target_link_libraries(test PRIVATE Catch2::Catch2WithMain)
-
-if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  message(STATUS "Enabling libc++...")
-  # These are intentionally set for all targets
-  add_compile_options(-stdlib=libc++)
-  add_link_options(-stdlib=libc++)
-endif()
+# Link tests with dependencies
+find_package(Catch2 CONFIG REQUIRED)
+target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)

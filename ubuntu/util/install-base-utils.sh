@@ -15,9 +15,6 @@ packages+=(wget curl)
 # Used for unpacking dependencies in some installation scripts
 packages+=(zip unzip tar)
 
-# Used by vcpkg
-packages+=(pkg-config)
-
 # Used to update tests
 packages+=(git)
 

@@ -11,9 +11,6 @@ ENV CMAKE_GENERATOR=Ninja
 ENV CMAKE_CXX_COMPILER_LAUNCHER=/usr/bin/ccache
 ENV CCACHE_DIR=/var/cache/ccache
 
-ENV VCPKG_DEFAULT_BINARY_CACHE=/var/cache/vcpkg/
-ENV CT_VCPKG_ROOT_DIR=/opt/vcpkg
-
 RUN --mount=type=bind,target=util,source=util \
     apt-get update -qq && \
     util/install-base-utils.sh && \
