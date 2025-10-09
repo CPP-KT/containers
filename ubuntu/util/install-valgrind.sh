@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-VALGRIND_VERSION=3.24.0
+VALGRIND_VERSION=3.25.1
 
 DOWNLOAD_URL="https://sourceware.org/pub/valgrind"
 FILENAME="valgrind-${VALGRIND_VERSION}.tar.bz2"
