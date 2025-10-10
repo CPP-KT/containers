@@ -20,7 +20,7 @@ cmake --build "${BUILD_DIR}"
 # Run
 echo 'Running test target'
 export ASAN_OPTIONS=alloc_dealloc_mismatch=0 # https://github.com/llvm/llvm-project/issues/59432
-"${BUILD_DIR}"/test
+"${BUILD_DIR}"/tests
 
 # Clean up
 rm -rf "${BUILD_DIR}"
