@@ -1,0 +1,22 @@
+cabal-version:      3.0
+name:               wordcount-test
+version:            0.1.0.0
+-- synopsis:
+-- description:
+license:            NONE
+author:             ivan medvedev
+maintainer:         johndoe@example.com
+-- copyright:
+build-type:         Simple
+
+common warnings
+    ghc-options: -Wall -O2
+
+executable wordcount-test
+    import:           warnings
+    main-is:          Main.hs
+    -- other-modules:
+    -- other-extensions:
+    build-depends:    bytestring, mtl, random-fu, base, random, process, vector, splitmix
+    hs-source-dirs:   app
+    default-language: Haskell2010

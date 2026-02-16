@@ -62,3 +62,38 @@ jobs:
       - name: Push Docker image
         run: |
           docker push "$IMAGE_FULL_TAG"
+
+  haskell:
+    name: "Haskell toolchain with GHC and Cabal"
+
+    runs-on: ubuntu-latest
+
+    env:
+      REGISTRY: ghcr.io
+      IMAGE_NAME: "${{ github.repository_owner }}/haskell"
+      IMAGE_TAG: "latest"
+
+    steps:
+      - name: Prepare environment variables
+        run: |
+          echo "IMAGE_NAME=${IMAGE_NAME,,}" >>$GITHUB_ENV
+          echo "IMAGE_FULL_TAG=$REGISTRY/${IMAGE_NAME,,}:$IMAGE_TAG" >>$GITHUB_ENV
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build haskell \
+            --tag "$IMAGE_FULL_TAG" \
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push Docker image
+        run: |
+          docker push "$IMAGE_FULL_TAG"
